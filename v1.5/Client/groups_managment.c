@@ -184,7 +184,12 @@ void view_group_chat_log(int sock_fd)                                       //�
     printf("\t\t\t\t=====================================================================\n");
     printf("\t\t\t\t                             %s的聊天记录\n",user.my_group.group_name);
     printf("\t\t\t\t=====================================================================\n");
+    sleep(1);
     send(sock_fd,&user,sizeof(struct node_client),0);
+    usleep(40000);
+    printf("\t\t\t\t按[Enter]键返回~\n");
+    printf("\t\t\t\t=====================================================================\n");
+    getchar( );
     if((ch = getchar( )) == '\n')
     return ;                                                              //按任意键退出
 } 

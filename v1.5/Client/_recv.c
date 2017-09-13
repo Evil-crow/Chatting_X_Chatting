@@ -119,7 +119,7 @@ void _recv(void *socket_fd)
                         }
                         break;
                     case 7:
-                        printf("%s\n %s:%s\n",recv_user.my_firend.date_time,recv_user.consumer.username,recv_user.my_firend.friend_message);
+                        printf("\t\t\t\t%s\n\t\t\t\t %s:%s\n",recv_user.my_firend.date_time,recv_user.consumer.username,recv_user.my_firend.friend_message);
                         break;
                     case 8: 
                         if(recv_user.my_firend.friends_status == 0)           //下线提醒
@@ -180,7 +180,7 @@ void _recv(void *socket_fd)
                         break;
                     case 6:                                                      //表示查看历史消息
                         if(strcmp(recv_user.my_group.date_time,"zero") != 0)
-                        printf("%s %s:%s\n",recv_user.my_group.date_time,recv_user.my_group.member_name,recv_user.my_group.group_message); 
+                        printf("\t\t\t\t%s\n\t\t\t\t %s:%s\n",recv_user.my_group.date_time,recv_user.my_group.member_name,recv_user.my_group.group_message); 
                         else
                         printf("%s\n",recv_user.my_group.group_message);
                         break;
@@ -205,7 +205,7 @@ void _recv(void *socket_fd)
                 sp = open(path,O_RDWR | O_CREAT | O_APPEND,0644);
                 if(sp == -1)
                     _error("open",__LINE__);
-                ret = write(sp,recv_user.my_file.file_data,20);
+                ret = write(sp,recv_user.my_file.file_data,1);
                 if(ret == -1)
                     perror("write");
                 close(sp);

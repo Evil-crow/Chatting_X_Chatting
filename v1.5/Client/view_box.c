@@ -66,7 +66,7 @@ void view_box(int sock_fd)
     else
     {
         memset(&recv_user,0,sizeof(struct node_client));
-        printf("暂无消息.请稍候再试\n");
+        printf("\t\t\t\t暂无消息.请稍候再试\n");
         chat_status = 0;
         getchar( );
         if((ch = getchar( )) == '\n')
