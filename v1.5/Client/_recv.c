@@ -205,7 +205,7 @@ void _recv(void *socket_fd)
                 sp = open(path,O_RDWR | O_CREAT | O_APPEND,0644);
                 if(sp == -1)
                     _error("open",__LINE__);
-                ret = write(sp,recv_user.my_file.file_data,1);
+                ret = write(sp,recv_user.my_file.file_data,recv_user.my_file.len);
                 if(ret == -1)
                     perror("write");
                 close(sp);

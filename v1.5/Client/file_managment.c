@@ -46,6 +46,8 @@ void file_managment(int sock_fd)
     if(fp < 0)
     {
         printf("\t\t\t\t该文件不存在,请核实后重新发送!\n");
+        getchar( );
+        if((ch = getchar( )) == '\n')
         return ;
     }
     while(1)
@@ -54,11 +56,12 @@ void file_managment(int sock_fd)
         user.flag = 4;
         strcpy(user.my_firend.friends_name,friend_name_file);
         strcpy(user.my_file.file_name,file_constpath_copy);
-        ret = read(fp,user.my_file.file_data,1);
-        if(ret != 1)
+        ret = read(fp,user.my_file.file_data,20);
+        if(ret == 0)
             break;
+        user.my_file.len = ret;
         send(sock_fd,&user,sizeof(struct node_client),0);            //进行文件内容的发送
-        usleep(1500);
+        usleep(15000);
     }
     close(fp);
     printf("\t\t\t\t文件发送完成,接受不接受就不是我能管的了!\n");

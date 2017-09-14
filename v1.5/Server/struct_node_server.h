@@ -40,6 +40,7 @@ struct group
 struct file
 {
     int                         file_flag;
+    int                         len;
     char                        file_name[MAX_STR];                 //传输的文件名
     char                        file_data[50];                     //一次读取200字节的内容
 };
